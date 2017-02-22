@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require "merb-core"
+
+unless ARGV.index('-a') || ARGV.index('-i')
+  ARGV.push *%w[-a mongrel]
+end
+  
+Merb.start

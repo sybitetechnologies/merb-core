@@ -1,0 +1,168 @@
+== 0.9.1 "Some are half-wild, and some are just outlaws." 2008-02-29
+* add named routes to error page
+* updates to nested resources
+* get autotest working for merb-core
+* Symbolize params in route generation, to accomodate Mashes
+* Fixes :status not working on strings.
+* update thin adapter to newest way of silencing the log
+* :format => :html possible in partials
+* print request URI when "No routes match the request" error thrown
+* fix merb -i
+* Make Merb.start default to the runner adapter
+* It's now possible to send binary data using the send_data method
+  and to specify the disposition, filename and type of the data being sent.
+* Fix memcached session writes
+* allow the setting of a custom session key
+* Changed TemplateNotFound to stop so much confusion about incorrect
+  template locations because it doesn't include .*
+* fix dropping of pid files in cluster and daemon mode
+* Nested partials don't blow away locals.
+* Better loading of classes
+* Support concat and test capture/concat
+* Added single key assignment to Merb.config
+* Move url method from ControllerMixin to AbstractController for use in
+  Mailers and Parts etc.
+* Merb.config now returns Merb::Config instead of the current
+  configuration hash.
+* Added Merb.reload which reloads the framework classes.
+* Adding Merb.env shorthand for Merb.environment
+* Added a quaint Merb Configurator
+* With bootloader order changes, environment was not getting loaded
+* Fix cookie parsing from localhost, add spec
+* Add support for multiple template roots
+* Allow override of router.rb file in config
+* Modify behavior of 'namespace' in the router
+* Fix content negotiation for IE and its stupid accept header.
+* Only serve static files when the HTTP method is GET or HEAD. Other
+  requests should still be handled by Merb.
+* Add path_prefix support.
+* Changes dispatch_to spec helper to yield the controller
+* redo of load_dependency, after_app_loads callback, and Kernel changes
+* Added Merb.logger.auto_flush
+* Fix nested resource routing
+* Do not drop PID file is not running as daemon or cluster
+* Fixed problem with resources inside a namespace block
+* Added support for dynamic layouts.
+* adding conditional behaviour to filters :if and :unless
+* Use the escape_xml from Erubis rather than rolling our own
+* Add a merb.reload! command to the merb -i console.
+* Get rid of StringScanner dependency.
+* Fix render_then_call to support new streaming tech.
+* Fix filter specs to respect append order of filters.
+* check for empty string before calling to_sym on the format parameter
+* fake requests are incorrectly loading controller classes with namespaces
+* Fix the RubyGems monkeypatch by testing for Merb.root instead of looking
+  in $"
+* fix core spec dependency on merb_rspec
+* Replace calls to puts with Merb.logger
+* Fix problem with static files, use Proc === body
+* Added file and line information for evals in router.rb.
+
+== 0.9.0 "All you need, none you don't" 2008-02-13
+* Developer Only Release
+* Split merb into merb-core and merb-more
+
+== 0.5.3 "Inexperienced With Girls" 2008-01-28
+* Improved handling of models/controllers with dependencies
+* Improved cluster starting/stopping
+* Frozen script/merb should really work now
+* Merb::Cookies is used for cookie jar purposes
+* test_helper no longer assumes rspec mocking framework
+* asset bundler handles strings and symbols
+* render() now has an option for explicitly rendering an object
+* Fixed annoying bug in exception rendering for 500 internal_server_error
+* testing request helper accepts an option hash
+
+== 0.5.2 "Great White North" 2008-01-14
+* Make Merb.load_paths accessible for modification
+* Fix issues with running frozen apps
+
+== 0.5.1 "Electic Boogaloo" 2008-01-10
+* Fix 0.5.0
+
+== 0.5.0 "Thanks Zed" 2008-01-09
+* Added asset bundling for Javascript and stylesheet files
+
+== 0.4.2 "Surf's up." 2007-12-14
+* Super-huge speed boost for rendering Erubis templates with partials
+* Windows-specific fixes to Merb's Rakefile
+* Blocking write is called when in development, test, Windows and jRuby environments and platforms.
+* merb_helpers: form field labels are now explicit, huge documentation update, added select, fieldset, more helpers
+* Fixed merb.show_routes within merb -i
+* Fixed image_tag, css_include_tag, and js_include_tag to work with path_prefix
+* Adds spec helper methods with_route and dispatch_to
+* fix rakefile cfor cygwin
+* add count with collection to partial()
+* Form control mixin is deprecated Use merb_helpers plugin.
+* add redirect matcher to rspec test helpers
+* allow r.resource(:foo, :myparam => 42) resource routes pass on params to underlying match() call
+* spit out error and help message if you call merb with no args
+* get rid of dependency on mongrel for escape and unescape
+* make sure not to use write_nonblock when logging to STDOUT
+* Fixed image_tag, css_include_tag, and js_include_tag to work with path_prefix
+* fix set_status to actually work, add docs,
+* config/merb.yml is now correctly loaded from Rake and test environment - using Merb::Server.load_config
+* added config option to disable loading of the JSON gem - still enabled by default 
+* don't raise if names local on a partial is nil
+* Use svn export instead of checkout upon merb:freeze_from_svn
+* Extracted url and other general methods out of ControllerMixin into GeneralControllerMixin
+* fix caching of @_buffer in render, form_for
+* Seperates spec helpers into the Merb::Test namespace to prevent spec methods leaking into specs
+* Changes the spec url helper method to the same used in the controller
+* Made Request#parse_multipart return an empty hash instead of nil if the request is not multipart
+* Changes throw_content so that it can be called without a block
+* Added :namespace option to routes.
+
+== 0.4.1 "Faster Partials or Partially Faster?" 2007-11-12
+* Fixed pluralization issues with generators
+* Resource generators are much improved
+* url() helper now supports nested resources
+* url(:post, @post) observers @post.new_record? and adjusts accordingly
+* Fixed bug with empty Accept headers
+* Added config/boot.rb to load framework from gems or framework/ dir
+* New partial() is much faster (and less buggy)
+* render :partial no longer supported
+* Add a buffered logger
+* Fixes bug with parameterized actions on some platforms
+* partial can now be called on collections:
+*  partial("widget", :with => @new_widgets, :as => "widget")
+* SMTP mailer now supports non-AUTH setups
+* set_status() can take symbolic codes like :not_found
+* JRuby compat fixes
+* Speed boost, esp. with rendering
+* Fix spec_helper running against development database
+* Fix major bug with sessions not working
+
+== 0.4.0 "This ain't yo mommas merb" 2007-11-06
+
+== 0.3.7 "Out of the basement" 2007-08-05
+
+== 0.3.4 "Route fixer" 2007-05-31
+
+== 0.3.3 "Hey buddy can you spare a route generator?" 2007-05-31
+
+== 0.3.1 "The Fixed and the Furious" 2007-04-30
+
+== 0.3.0 "The Fast and the Furious" 2007-04-28
+
+== 0.2.0 "Accept your fate and respond_to change" 2007-03-18
+
+== 0.1.0 "Generation Herb" 2007-01-18
+
+== 0.0.9 "merb is the new black" 2007-01-14
+
+== 0.0.8 "Merbivore" 2006-12-17
+
+== 0.0.7 "Lean and mean merbing machine" 2006-11-29
+
+== 0.0.6 "The Black Belt Release" 2006-11-09
+
+== 0.0.5 "The getting real release" 2006-11-01
+
+== 0.0.4 "The toddler phase" 2006-10-26
+
+== 0.0.3 "the switchblade suicide release" 2006-10-17
+
+== 0.0.2 "the quicksliver release" 2006-10-16
+
+== 0.0.1 "The pocket rocket release" 2006-10-15
